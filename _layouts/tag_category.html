@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<ul>
+  {% assign grouped = site.posts | map: page.filter | uniq | sort %}
+  {% for item in grouped %}
+    <li><a href="#{{ item | slugify }}">{{ item }}</a></li>
+  {% endfor %}
+</ul>
+
+{% for item in grouped %}
+  <h2 id="{{ item | slugify }}">{{ item }}</h2>
+  <ul>
+    {% for post in site.posts %}
+      {% if post[page.filter] contains item %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a> — {{ post.date | date: "%b %-d, %Y" }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
