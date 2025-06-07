@@ -1,5 +1,6 @@
 title: Mije
 description: Minimal Jekyll theme
+baseurl: "/mije"
 
 markdown: kramdown
 highlighter: rouge
